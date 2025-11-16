@@ -1,0 +1,756 @@
+/* ================================================= */
+/* style-pro.css - EMOform (Versi Profesional)     */
+/* Tema: Emosi Dinamis & Glassmorphism           */
+/* ================================================= */
+
+/* --- Keyframes (Jantung Animasi) --- */
+
+@keyframes animatedBodyBG {
+    /* Gradien latar belakang yang bergerak sangat lambat */
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientButton {
+    /* Gradien tombol yang lebih cepat */
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes contentSlideIn {
+    /* Animasi konten slide-in */
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes imageZoom {
+    /* Animasi zoom halus untuk gambar di split-screen */
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulseEmoji {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2) rotate(5deg); }
+    100% { transform: scale(1); }
+}
+
+@keyframes blobFloat1 {
+    /* Animasi untuk blob 1 */
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, -80px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes blobFloat2 {
+    /* Animasi untuk blob 2 */
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-60px, 70px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* --- Pengaturan Dasar & Latar Belakang Animasi --- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Latar Belakang Gradien Animasi SUPER HALUS */
+    background: linear-gradient(-45deg, #ccf5cf, #d1f8fa, #f1e0cd, #cdf7f5);
+    background-size: 400% 400%;
+    animation: animatedBodyBG 5s ease infinite;
+    
+    min-height: 100vh;
+    background-attachment: fixed; /* Penting untuk efek glassmorphism */
+    color: #212529;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; /* Mencegah blob membuat scroll horizontal */
+}
+
+/* --- Kustom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #c1d5c7;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #4a7c59;
+}
+
+
+/* --- 1. Halaman index.html & welcome.html (Split Screen) --- */
+
+.split-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Mencegah konten meluap */
+}
+
+.split-content {
+    /* Sisi kiri (konten) */
+    flex-basis: 50%;
+    padding: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: contentSlideIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+    opacity: 0; /* Mulai transparan */
+}
+
+.split-visual {
+    /* Sisi kanan (gambar) */
+    flex-basis: 50%;
+    background-color: #e8f5e9;
+    overflow: hidden;
+    position: relative;
+    animation: contentSlideIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
+    opacity: 0; /* Mulai transparan */
+}
+
+.split-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memenuhi kontainer */
+    animation: imageZoom 15s ease-in-out infinite; /* Animasi zoom halus */
+}
+
+/* Kartu di dalam split-content */
+.welcome-card, .welcome-container {
+    padding: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 480px; /* Batas lebar form */
+    text-align: center;
+}
+.welcome-container {
+    max-width: 600px; /* Batas lebar sapaan */
+}
+
+.welcome-header {
+    font-weight: 600;
+    color: #20c4bf;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+.welcome-name {
+    font-weight: 700;
+    color: #2a6f47;
+    font-size: 3rem;
+    line-height: 1.2;
+}
+.welcome-container p {
+    font-size: 1.2rem;
+    color: #495057;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+.welcome-card .form-label {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+.form-control:focus {
+    border-color: #4a7c59;
+    box-shadow: 0 0 15px rgba(74, 124, 89, 0.3), 0 0 0 0.25rem rgba(74, 124, 89, 0.2);
+}
+
+/* Responsif untuk Split Screen */
+@media (max-width: 768px) {
+    .split-container {
+        flex-direction: column; /* Tumpuk vertikal di HP */
+    }
+    .split-content {
+        flex-basis: auto;
+        padding: 2rem;
+    }
+    .split-visual {
+        flex-basis: 300px; /* Tinggi tetap untuk gambar */
+    }
+    .welcome-card, .welcome-container {
+        padding: 2rem;
+    }
+}
+
+/* --- 2. Halaman module.html (Glassmorphism & Blobs) --- */
+.sidebar-header span {
+    color: #20c4bf; /* Ganti ke warna baru yang Anda inginkan */
+}
+/* Latar Belakang "Blob" Abstrak */
+.blob-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10; /* Di belakang segalanya */
+    overflow: hidden;
+}
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px); /* Efek buram yang sangat kuat */
+    opacity: 0.4;
+}
+.blob1 {
+    /* Blob hijau */
+    width: 400px;
+    height: 400px;
+    background: #a5d6a7;
+    top: -100px;
+    left: -100px;
+    animation: blobFloat1 20s infinite alternate;
+}
+.blob2 {
+    /* Blob biru muda */
+    width: 300px;
+    height: 300px;
+    background: #b2ebf2;
+    bottom: -50px;
+    right: -50px;
+    animation: blobFloat2 18s infinite alternate;
+}
+
+/* Sidebar (EfK BARU: Gradasi Emosi Animasi) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    
+    /* EFEK BARU: GRADASI EMOSI ANIMASI */
+    /* Warna-warna ini terinspirasi dari logo Anda (Biru, Hijau, Oranye, Ungu muda) */
+    background: linear-gradient(-45deg, #cae2ed, #e1f8f6, #ffede6, #e6bfed);
+    background-size: 400% 400%;
+    /* Gunakan keyframe yang sudah ada, tapi atur kecepatan (18 detik) */
+    animation: pulseGlow 4s infinite alternate ease-in-out;
+    
+    padding: 1.5rem; 
+    
+    border-right: 1px solid rgba(255, 255, 255, 0.3); /* Border transparan */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.sidebar .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.25rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent; /* Persiapan untuk state aktif */
+}
+.sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #2a6f47;
+    font-weight: 600;
+    border: 1px solid rgba(74, 124, 89, 0.2); /* Border halus di sekeliling */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.sidebar .nav-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(5px);
+    color: #2a6f47;
+}
+
+/* Area Konten Utama (Seamless Page) */
+/* Area Konten Utama (Seamless Page) */
+.main-content {
+    margin-left: 280px;
+    padding: 2.5rem;
+    background: linear-gradient(-45deg, #ccf5cf, #d1f8fa, #f1e0cd, #cdf7f5);
+    background-size: 400% 400%;
+    animation: animatedBodyBG 5s ease infinite;
+    min-height: 100vh;
+    border-top-left-radius: 1.5rem; 
+    border-bottom-left-radius: 1.5rem; 
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.08);
+    }
+.tab-pane {
+    /* Hapus semua style kartu, kini dia hanya kontainer */
+    animation: contentSlideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* --- 3. Halaman summary.html --- */
+
+/* Kartu "Pulau" Solid */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative; /* Tambahkan ini */
+    z-index: 1;
+}
+.summary-container {
+    padding: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    animation: contentSlideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.summary-header {
+    font-weight: 600;
+    color: #4a7c59;
+    text-align: center;
+    border-bottom: 2px solid #e6f0e9;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+.summary-item {
+    margin-bottom: 2rem;
+}
+.summary-item h5 {
+    font-weight: 600;
+    color: #2a6f47;
+}
+.summary-answer {
+    background-color: #f8f9fa;
+    border: 1px solid #eef1f3;
+    border-left: 4px solid #4a7c59;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    min-height: 80px;
+    white-space: pre-wrap;
+    font-style: italic;
+    color: #333;
+    transition: all 0.3s ease;
+}
+.summary-answer:hover {
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Elemen Umum (Tombol, Kartu, Modal) --- */
+
+.btn-primary {
+    padding: 0.7rem 1.4rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    background: linear-gradient(-45deg, #4a7c59, #5a9a6e, #2a6f47, #5cb85c);
+    background-size: 400% 400%;
+    animation: gradientButton 10s ease infinite;
+    box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+}
+.btn-primary:hover {
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(74, 124, 89, 0.5), 0 0 20px rgba(90, 154, 110, 0.4);
+    animation-duration: 5s;
+}
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 2px 8px rgba(74, 124, 89, 0.4);
+}
+
+.hero-image {
+    height: 250px;
+    background-size: cover;
+    background-position: top;
+    border-radius: 1rem;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    color: rgb(21, 224, 217);
+    text-shadow: 0 3px 10px rgba(9, 255, 25, 0.5);
+    font-size: 2.75rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    background-attachment: fixed;
+}
+
+.accordion-item, .card {
+    border: none;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.accordion-item:hover, .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+.accordion-button {
+    font-weight: 500;
+    border-radius: 0.75rem;
+}
+.accordion-button:not(.collapsed) {
+    background-color: #e6f0e9;
+    color: #2a6f47;
+    box-shadow: none;
+}
+.accordion-button:not(.collapsed) {
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
+}
+.accordion-collapse {
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+}
+
+/* Modal (Glassmorphism) */
+.modal-content {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    position: relative;  /* <-- TAMBAHKAN INI */
+    overflow: hidden;    /* <-- TAMBAHKAN INI */
+}
+
+.list-group-item-success {
+    background-color: #e6f0e9 !important;
+    color: #2a6f47 !important;
+    border-color: #4a7c59;
+}
+
+/* Interaksi Emoji (PENTING: Hapus 'onmouseover' dari HTML) */
+#emotion-selection-view span {
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#emotion-selection-view span:hover {
+    transform: scale(1.6) rotate(20deg);
+}
+
+/* Modal Penutup */
+.completion-emoji {
+    display: inline-block;
+    animation: pulseEmoji 1.5s infinite ease-in-out;
+}
+
+/* ================================================= */
+/* --- 10. EFEK PERAYAAN BALON (BARU) ---         */
+/* ================================================= */
+
+@keyframes floatUp {
+    0% {
+        /* Mulai dari bawah (100vh) + 100px */
+        transform: translateY(100px);
+        opacity: 1;
+    }
+    100% {
+        /* Mengapung ke atas (-100vh) - 100px agar hilang */
+        transform: translateY(-110vh); 
+        opacity: 0;
+    }
+}
+
+.balloon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* z-index: 1 agar di belakang .center-container */
+    z-index: 2; 
+    pointer-events: none; /* Agar tidak bisa diklik */
+    overflow: hidden; /* Sembunyikan balon di luar layar */
+}
+
+.balloon {
+    width: 70px;
+    height: 90px;
+    background-color: #ffc107; /* Warna default (akan ditimpa) */
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Bentuk balon */
+    position: absolute;
+    /* Mulai di bawah layar */
+    bottom: -100px; 
+    opacity: 0.7;
+    animation: floatUp 15s infinite ease-in; /* Animasi 15 detik */
+}
+
+/* Simpul balon */
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 10px;
+    background-color: inherit; /* Warna sama dengan balon */
+    border-radius: 0 0 50% 50%;
+}
+
+/* Variasi Balon (warna, posisi, kecepatan) */
+.balloon:nth-child(1) {
+    background-color: #d94c4c; /* Merah */
+    left: 10%;
+    animation-duration: 7s;
+    animation-delay: 0s;
+}
+.balloon:nth-child(2) {
+    background-color: #4CAF50; /* Hijau (tema Anda) */
+    left: 25%;
+    animation-duration: 7s;
+    animation-delay: 2s;
+}
+.balloon:nth-child(3) {
+    background-color: #2196F3; /* Biru */
+    left: 40%;
+    animation-duration: 7s;
+    animation-delay: 5s;
+}
+.balloon:nth-child(4) {
+    background-color: #FFEB3B; /* Kuning */
+    left: 60%;
+    animation-duration: 7s;
+    animation-delay: 1s;
+}
+.balloon:nth-child(5) {
+    background-color: #9C27B0; /* Ungu */
+    left: 75%;
+    animation-duration: 7s;
+    animation-delay: 7s;
+}
+.balloon:nth-child(6) {
+    background-color: #FF9800; /* Oranye */
+    left: 85%;
+    animation-duration: 7s;
+    animation-delay: 4s;
+}
+.balloon:nth-child(7) {
+    background-color: #4a7c59; /* Hijau Sage (tema Anda) */
+    left: 50%;
+    animation-duration: 7s;
+    animation-delay: 9s;
+}
+
+/* ================================================= */
+/* --- 11. EFEK LEDAKAN EMOSI (BARU) ---         */
+/* ================================================= */
+
+/* Pastikan modal-body bisa jadi "wadah" animasi */
+.modal-body {
+    position: relative;
+   
+}
+
+/* Partikel emoji individu */
+/* Partikel emoji individu */
+/* Partikel emoji individu */
+.emote-particle {
+    position: absolute;
+    bottom: 80px; 
+    font-size: 1.5rem;
+    pointer-events: none;
+    z-index: 9999; 
+    
+    /* UBAH INI: Animasi 4.5 detik */
+    animation: emoteFloatUp 4.5s ease-out forwards;
+}
+
+/* Animasi Keyframes (mengapung ke atas) */
+@keyframes emoteFloatUp {
+    0% {
+        transform: translateY(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        /* UBAH INI: Menyebar SANGAT tinggi */
+        transform: translateY(-600px) rotate(720deg) scale(0.3);
+        opacity: 0;
+    }
+}
+/* Menyembunyikan kotak feedback secara default */
+#feedback-correct, #feedback-incorrect {
+    display: none; 
+    }
+
+/* ================================================= */
+/* --- 12. ALAT BANTU (STOP & REFRAMING) ---     */
+/* ================================================= */
+
+/* Tombol pemicu di halaman */
+.btn-outline-primary {
+    border-color: #4a7c59;
+    color: #4a7c59;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.btn-outline-primary:hover {
+    background-color: #4a7c59;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(74, 124, 89, 0.3);
+}
+
+/* Penataan Modal Teknik STOP */
+.stop-item-card {
+    /* Gunakan background modal (glassmorphism) agar tidak polos putih */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stop-item {
+    display: flex;
+    align-items: flex-start; /* Sejajar dari atas */
+    gap: 1rem;
+    padding: 0.5rem; /* Beri sedikit padding */
+}
+
+.stop-letter {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    background-color: #e6f0e9;
+    color: #2a6f47;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stop-content h5 {
+    font-weight: 600;
+    /* Ubah warna agar kontras dengan latar glassmorphism */
+    color: #212529; 
+    margin-bottom: 0.25rem;
+}
+
+.stop-content p {
+    color: #343a40; /* Ubah warna agar kontras */
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* Penataan Modal Reframing Pikiran */
+.reframing-example {
+    background-color: rgba(255, 255, 255, 0.1); /* Latar semi-transparan */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.reframing-example p {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Buat ikon X dan ✓ */
+.reframing-example p::before {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    font-weight: 700;
+    margin-right: 0.75rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 22px; /* Sesuaikan agar pas di tengah */
+    border-radius: 50%;
+}
+
+.text-negative {
+    color: #d94c4c;
+}
+.text-negative::before {
+    content: '✗';
+    color: #d94c4c;
+    border: 2px solid #d94c4c;
+}
+
+.text-positive {
+    color: #2a6f47;
+}
+.text-positive::before {
+    content: '✓';
+    color: #2a6f47;
+    border: 2px solid #2a6f47;
+}
+
+/* === AKHIR BAGIAN ALAT BANTU === */
+
+  /* === BAGIAN RESPONSIVE (VERSI DIPERKUAT + DIPERBAIKI) === */
+@media (max-width: 991.98px) {
+
+    /* 1. Ubah Sidebar menjadi Header di Atas */
+    .sidebar {
+        width: 100% !important;       /* Lebar penuh */
+        height: auto !important;      /* Tinggi otomatis */
+        position: relative !important;/* Hapus 'fixed' */
+        bottom: auto !important;
+        border-radius: 0 !important;  /* Hapus radius di HP */
+    }
+
+    /* DIPERBAIKI: Sintaks ini sekarang di luar blok .sidebar */
+    .sidebar .sidebar-header {
+        justify-content: center;
+    }
+
+    /* 2. Ubah Menu Navigasi (Vertikal -> Horizontal) */
+    .sidebar .nav {
+        flex-direction: row !important; /* Paksa jadi baris horizontal */
+        flex-wrap: wrap;                
+        justify-content: center;        
+    }
+
+    .sidebar .nav-item {
+        flex-grow: 1; 
+    }
+
+    .sidebar .nav-link {
+        text-align: center; 
+    }
+
+    /* 3. Buat Konten Utama Mengisi Layar Penuh */
+    .main-content {
+        margin-left: 0 !important; /* Hapus margin kiri dari sidebar */
+        width: 100% !important;
+        border-radius: 0 !important; /* Hapus radius di HP */
+        box-shadow: none !important; /* Hapus bayangan di HP */
+    }
+
+    /* Opsional: Kecilkan sedikit gambar hero di HP */
+    .hero-image {
+        height: 200px;
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Modul Interaktif EMOform</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css?v=1.1"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+</head>
+<body>
+
+    <div class="blob-container">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+    </div>
+
+    <div class="sidebar d-flex flex-column flex-shrink-0">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+            <span class="fs-4 sidebar-header">
+                <img src="logo1.jpg" width="70px" height="70" style="margin-right: 10px; border-radius: 50%;"> 
+                <span>EMOform</span>
+            </span>
+        </a>
+        <hr class="my-2">
+        <ul class="nav nav-pills flex-column mb-auto" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <li class="nav-item">
+                <a class="nav-link active" id="v-pills-pendahuluan-tab" data-bs-toggle="pill" href="#v-pills-pendahuluan" role="tab" aria-controls="v-pills-pendahuluan" aria-selected="true">
+                    <i class="bi bi-play-circle-fill"></i> Pendahuluan
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="v-pills-kesadaran-tab" data-bs-toggle="pill" href="#v-pills-kesadaran" role="tab" aria-controls="v-pills-kesadaran" aria-selected="false">
+                    <i class="bi bi-person-badge"></i> Kesadaran Diri
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="v-pills-pengelolaan-tab" data-bs-toggle="pill" href="#v-pills-pengelolaan" role="tab" aria-controls="v-pills-pengelolaan" aria-selected="false">
+                    <i class="bi bi-toggles"></i> Pengelolaan Diri
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="v-pills-motivasi-tab" data-bs-toggle="pill" href="#v-pills-motivasi" role="tab" aria-controls="v-pills-motivasi" aria-selected="false">
+                    <i class="bi bi-lightbulb-fill"></i> Motivasi
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="v-pills-empati-tab" data-bs-toggle="pill" href="#v-pills-empati" role="tab" aria-controls="v-pills-empati" aria-selected="false">
+                    <i class="bi bi-heart-half"></i> Empati
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="v-pills-keterampilan-tab" data-bs-toggle="pill" href="#v-pills-keterampilan" role="tab" aria-controls="v-pills-keterampilan" aria-selected="false">
+                    <i class="bi bi-people-fill"></i> Keterampilan Sosial
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="v-pills-refleksi-tab" data-bs-toggle="pill" href="#v-pills-refleksi" role="tab" aria-controls="v-pills-refleksi" aria-selected="false">
+                    <i class="bi bi-journal-check"></i> Refleksi
+                </a>
+            </li>
+        </ul>
+        <hr class="my-2">
+        <div class="small text-muted text-center">© 2025 EMOform Amalia Nur Utami</div>
+    </div>
+    
+    <div class="main-content">
+        <div class="tab-content" id="v-pills-tabContent">
+
+            <div class="tab-pane fade show active" id="v-pills-pendahuluan" role="tabpanel" aria-labelledby="v-pills-pendahuluan-tab">
+                <div class="hero-image" style="background-image: url(banner.jpg);" data-aos="fade-down">
+                    Selamat Datang
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">Mengelola Emosi dengan Cerdas dan Sehat</h2>
+                <p class="lead" id="welcome-lead" data-aos="fade-up" data-aos-delay="200">Selamat datang...</p>
+                <p data-aos="fade-up" data-aos-delay="300">Modul ini didasarkan pada kerangka Kecerdasan Emosional (EQ) dari Daniel Goleman, yang akan memandu kita melalui lima keterampilan inti. Anda akan belajar untuk lebih menyadari diri sendiri, mengelola impuls, memotivasi diri, berempati, dan membangun hubungan sosial yang lebih baik.</p>
+                <p data-aos="fade-up" data-aos-delay="350">Sebelum memulai, mari kita luangkan waktu sejenak untuk memeriksa perasaan Anda hari ini.</p>
+                <button type="button" class="btn btn-primary btn-lg mt-2" data-bs-toggle="modal" data-bs-target="#emotionCheckInModal" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="bi bi-emoji-smile me-2"></i> Mulai Check-In Emosi
+                </button>
+                <hr class="my-4" data-aos="fade-up" data-aos-delay="450">
+                <div class="d-flex justify-content-end" data-aos="fade-up" data-aos-delay="500">
+                    <button class="btn btn-primary" onclick="showTab('v-pills-kesadaran-tab')">Mulai Modul <i class="bi bi-arrow-right-short"></i></button>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-kesadaran" role="tabpanel" aria-labelledby="v-pills-kesadaran-tab">
+                <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1506126613408-2e61f25b2a0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');" data-aos="fade-down">
+                    Kesadaran Diri
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">1. Kesadaran Diri (Self-Awareness)</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Fondasi dari kecerdasan emosional adalah mengetahui apa yang Anda rasakan dan mengapa.</p>
+                <div class="accordion" id="accordionKesadaran" data-aos="fade-up" data-aos-delay="300">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="bi bi-question-circle-fill me-2"></i> Apa itu Kesadaran Diri?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionKesadaran">
+                            <div class="accordion-body">
+                                Menurut Goleman, Kesadaran Diri adalah kemampuan untuk "menyadari perasaan diri dan dampaknya terhadap orang lain." Ini bukan hanya tentang mengetahui Anda sedang marah, tetapi juga memahami "mengapa" Anda marah, apa pemicunya, dan bagaimana kemarahan itu memengaruhi cara Anda berbicara dan bertindak.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mt-2">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="bi bi-camera-video-fill me-2"></i> Video: Mengenal Emosi Diri
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionKesadaran">
+                            <div class="accordion-body">
+                                Tonton video di bawah ini untuk mendapatkan pemahaman lebih dalam tentang cara kerja emosi kita dan bagaimana mulai mengenalinya.
+                                <div class="ratio ratio-16x9 mt-2" style="border-radius: 0.5rem; overflow: hidden;">
+                                    <iframe src="https://www.youtube.com/embed/YOW7RUarrf8?si=EYkuujbhBuYGAIFk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4" data-aos="fade-up" data-aos-delay="350">
+                <div class="d-flex justify-content-between mt-4" data-aos="fade-up" data-aos-delay="400">
+                    <button class="btn btn-outline-secondary" onclick="showTab('v-pills-pendahuluan-tab')"><i class="bi bi-arrow-left-short"></i> Sebelumnya</button>
+                    <button class="btn btn-primary" onclick="showTab('v-pills-pengelolaan-tab')">Selanjutnya <i class="bi bi-arrow-right-short"></i></button>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-pengelolaan" role="tabpanel" aria-labelledby="v-pills-pengelolaan-tab">
+                 <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1599420186938-1a5c6020c64c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');" data-aos="fade-down">
+                    Pengelolaan Diri
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">2. Pengelolaan Diri (Self-Regulation)</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Setelah Anda sadar akan emosi Anda, langkah selanjutnya adalah mengelolanya.</p>
+                <div class="accordion" id="accordionPengelolaan" data-aos="fade-up" data-aos-delay="300">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                <i class="bi bi-question-circle-fill me-2"></i> Apa itu Pengelolaan Diri?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionPengelolaan">
+                            <div class="accordion-body">
+                                Ini adalah kemampuan untuk "mengontrol impuls, stres, dan ekspresi emosional negatif." Ini bukan berarti menekan emosi Anda, tetapi meresponsnya dengan cara yang sehat dan konstruktif. Daripada meledak dalam kemarahan, Anda mengambil napas, berpikir, dan memilih respons yang lebih baik.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mt-2">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="bi bi-headphones me-2"></i> Panduan Relaksasi
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionPengelolaan">
+                            <div class="accordion-body">
+                                Salah satu cara mengelola diri saat stres adalah melalui relaksasi. Coba dengarkan panduan audio singkat ini untuk menenangkan pikiran Anda.
+                                <audio controls class="w-100 mt-2">
+                                    <source src="ssstik.io_1763209038830.mp3" type="audio/mpeg">
+                                    Browser Anda tidak mendukung pemutar audio.
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="mt-4" data-aos="fade-up" data-aos-delay="300">Alat Bantu Cepat</h5>
+                <p data-aos="fade-up" data-aos-delay="300">Gunakan alat ini saat Anda merasa kewalahan untuk kembali tenang.</p>
+                
+                <div class="row g-3" data-aos="fade-up" data-aos-delay="350">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-outline-primary w-100 p-3" data-bs-toggle="modal" data-bs-target="#modalTeknikStop">
+                            <i class="bi bi-pause-circle-fill me-2"></i> Latih Teknik STOP
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-outline-primary w-100 p-3" data-bs-toggle="modal" data-bs-target="#modalReframing">
+                            <i class="bi bi-arrow-repeat me-2"></i> Coba Reframing Pikiran
+                        </button>
+                    </div>
+                </div>
+                <hr class="my-4" data-aos="fade-up" data-aos-delay="350">
+                <div class="d-flex justify-content-between mt-4" data-aos="fade-up" data-aos-delay="400">
+                    <button class="btn btn-outline-secondary" onclick="showTab('v-pills-kesadaran-tab')"><i class="bi bi-arrow-left-short"></i> Sebelumnya</button>
+                    <button class="btn btn-primary" onclick="showTab('v-pills-motivasi-tab')">Selanjutnya <i class="bi bi-arrow-right-short"></i></button>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="v-pills-motivasi" role="tabpanel" aria-labelledby="v-pills-motivasi-tab">
+                <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');" data-aos="fade-down">
+                    Motivasi
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">3. Motivasi (Motivation)</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Gunakan emosi Anda untuk mendorong diri Anda mencapai tujuan.</p>
+                <p data-aos="fade-up" data-aos-delay="300">Motivasi dalam konteks EQ berarti "menggerakkan diri untuk mencapai tujuan dengan energi positif." Ini adalah optimisme dan ketekunan dalam menghadapi kemunduran. Orang yang termotivasi secara internal tidak hanya didorong oleh uang atau status, tetapi oleh keinginan pribadi untuk berprestasi.</p>
+                <h5 class="mt-4" data-aos="fade-up" data-aos-delay="350">Space for motivation : From you and for you</h5>
+                <p data-aos="fade-up" data-aos-delay="400">Tuliskan dalam form di bawah ini: Apa satu tujuan pribadi atau profesional yang ingin Anda capai? Apa alasan "internal" (nilai, passion, pertumbuhan diri) yang mendorong Anda?</p>
+                <div class="form-group" data-aos="fade-up" data-aos-delay="450">
+                    <textarea class="form-control" id="motivasiForm" rows="6" placeholder="Contoh: Saya ingin kuliah (tujuan) karena saya ingin sukses..."></textarea>
+                </div>
+                <hr class="my-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="d-flex justify-content-between mt-4" data-aos="fade-up" data-aos-delay="550">
+                    <button class="btn btn-outline-secondary" onclick="showTab('v-pills-pengelolaan-tab')"><i class="bi bi-arrow-left-short"></i> Sebelumnya</button>
+                    <button class="btn btn-primary" onclick="saveMotivasiAndNext('v-pills-empati-tab')">Simpan & Lanjut <i class="bi bi-arrow-right-short"></i></button>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-empati" role="tabpanel" aria-labelledby="v-pills-empati-tab">
+                <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1504813180479-b88a109015c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');" data-aos="fade-down">
+                    Empati
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">4. Empati (Empathy)</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Memahami apa yang dirasakan orang lain adalah kunci untuk hubungan yang sehat.</p>
+                <div class="accordion" id="accordionEmpati" data-aos="fade-up" data-aos-delay="300">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                <i class="bi bi-question-circle-fill me-2"></i> Apa itu Empati?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse show" data-bs-parent="#accordionEmpati">
+                            <div class="accordion-body">
+                                Empati adalah kemampuan untuk "memahami emosi dan perspektif orang lain." Ini berarti Anda dapat "merasakan" apa yang mungkin dirasakan orang lain, even jika Anda tidak berada dalam situasi yang sama. Ini sangat penting untuk komunikasi yang efektif dan membangun kepercayaan.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mt-2">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <i class="bi bi-lightbulb-fill me-2"></i> Cara Melatih Empati
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionEmpati">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>Mendengarkan Aktif:</strong> Benar-benar fokus pada apa yang dikatakan orang lain, bukan hanya menunggu giliran Anda berbicara.</li>
+                                    <li><strong>Perhatikan Bahasa Tubuh:</strong> Seringkali emosi terekspresikan secara non-verbal.</li>
+                                    <li><strong>Tunda Penilaian Lalu Bicarakan:</strong> Cobalah untuk memahami perspektif mereka sebelum menyimpulkan atau menghakimi.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4" data-aos="fade-up" data-aos-delay="350">
+                <div class="d-flex justify-content-between mt-4" data-aos="fade-up" data-aos-delay="400">
+                    <button class="btn btn-outline-secondary" onclick="showTab('v-pills-motivasi-tab')"><i class="bi bi-arrow-left-short"></i> Sebelumnya</button>
+                    <button class="btn btn-primary" onclick="showTab('v-pills-keterampilan-tab')">Selanjutnya <i class="bi bi-arrow-right-short"></i></button>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-keterampilan" role="tabpanel" aria-labelledby="v-pills-keterampilan-tab">
+                <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-4752b7e93D99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');" data-aos="fade-down">
+                    Keterampilan Sosial
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">5. Keterampilan Sosial (Social Skills)</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Menggunakan semua keterampilan sebelumnya untuk membangun relasi yang sehat dan efektif.</p>
+                <p data-aos="fade-up" data-aos-delay="250">Ini adalah puncak dari EQ—kemampuan untuk berkomunikasi, memengaruhi, berkolaborasi, dan mengelola konflik secara efektif.</p>
+                <h5 class="mt-4" data-aos="fade-up" data-aos-delay="300">Studi Kasus Interaktif</h5>
+                
+                <div class="card shadow-sm case-study-card" data-aos="fade-up" data-aos-delay="350">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf4273282f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" class="card-img-top" alt="Diskusi Tim" style="height: 300px; object-fit: cover;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fs-4">Skenario: Kritik di Depan Umum</h5>
+                        <p class="card-text">Anda sedang dalam rapat tim. Saat Anda mempresentasikan ide, seorang rekan kerja menyela dan berkata, "Saya rasa ide itu tidak akan berhasil, kita sudah pernah mencobanya dan gagal."</p>
+                        <p class="fw-bold">Bagaimana Anda merespons situasi ini?</p>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="false" data-feedback-target=".feedback-s1-incorrect">
+                                <strong>A.</strong> "Anda salah. Ide ini berbeda dan Anda tidak membiarkan saya selesai." (Merespons secara defensif)
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="false" data-feedback-target=".feedback-s1-incorrect">
+                                <strong>B.</strong> "Diam saja dan merasa kesal, lalu tidak memberikan ide lagi selama sisa rapat." (Merespons secara pasif)
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="true">
+                                <strong>C.</strong> "Terima kasih atas masukannya. Saya ingin sekali mendengar lebih lanjut tentang apa yang terjadi sebelumnya. Mungkin setelah ini kita bisa bahas perbedaannya?" (Merespons secara asertif dan cerdas emosi)
+                            </button>
+                        </div>
+                        <div class="alert alert-success mt-3 feedback-correct" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Tepat Sekali! (Keterampilan Sosial + Pengelolaan Diri)</h4>
+                            <p>Ini adalah respons yang cerdas secara emosional. Anda mengakui masukan rekan kerja Anda tanpa menjadi defensif (Pengelolaan Diri) dan membuka pintu untuk dialog lebih lanjut (Keterampilan Sosial).</p>
+                        </div>
+                        <div class="alert alert-danger mt-3 feedback-incorrect feedback-s1-incorrect" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Coba Lagi!</h4>
+                            <p>Respons ini mungkin defensif atau pasif. Ingat, tujuannya adalah mengelola emosi Anda (Pengelolaan Diri) dan menjaga hubungan kerja yang produktif (Keterampilan Sosial). Coba pertimbangkan pilihan lain.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-4"> 
+                        <h5 class="card-title fs-4">Skenario: Konflik dengan Teman</h5>
+                        <p class="card-text">“Teman baikmu lupa janjinya untuk datang ke acara pentingmu."</p>
+                        <p class="fw-bold">Bagaimana kamu merespons situasi ini?</p>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="false" data-feedback-target=".feedback-s2-incorrect-A">
+                                <strong>A.</strong> "Langsung memutuskan hubungan tanpa mau membicarakan."   
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="false" data-feedback-target=".feedback-s2-incorrect-B">
+                                <strong>B.</strong> "Mengabaikan perasaan kecewamu dan bersikap seperti tidak kenapa-napa." 
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="true">
+                                <strong>C.</strong> "Menyampaikan perasaan kecewamu dan juga mencari penjelasan atau mengajak berbicara bersama untuk maksud sebenarnya."
+                            </button>
+                        </div>
+                        <div class="alert alert-success mt-3 feedback-correct" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Respon Yang Sangat Baik</h4>
+                            <p>Itu artinya kamu mengenali bahwa dirimu butuh kejelasan dan juga rasa nyaman akan rasa tidak enak.</p>
+                        </div>
+                        <div class="alert alert-danger mt-3 feedback-incorrect feedback-s2-incorrect-A" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Respon Yang Perlu di Perbaiki</h4>
+                            <p>Jangan sampai menyakiti hati rekan kita tanpa mengetahui maksud sesungguhnya.</p>
+                        </div>
+                        <div class="alert alert-danger mt-3 feedback-incorrect feedback-s2-incorrect-B" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Respon Umum</h4>
+                            <p>Namun ini bisa menjadi bom waktu untuk mu jika terus berada dalam rasa kecewa namun dipendam.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-4"> 
+                        <h5 class="card-title fs-4">Skenario: Tekanan Deadline Tugas/Pekerjaan</h5>
+                        <p class="card-text">“Kamu menghadapi deadline yang ketat dan merasa sangat tertekan."</p>
+                        <p class="fw-bold">Apa yang kamu lakukan?</p>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="false" data-feedback-target=".feedback-s3-incorrect-A">
+                                <strong>A.</strong> "Panik dan mengerjakan semuanya dalam keadaan stress tinggi tanpa istirahat."   
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="false" data-feedback-target=".feedback-s3-incorrect-B">
+                                <strong>B.</strong> "Menunda sampai deadline karena kewalahan dengan hal itu." 
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-correct="true">
+                                <strong>C.</strong> "Menyusun prioritas tugas, mengambil waktu jeda untuk mengatur nafas, mengerjakan sesuai prioritas dan meminta bantuan jika perlu."
+                            </button>
+                        </div>
+                        <div class="alert alert-success mt-3 feedback-correct" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Respon Yang Sangat Baik</h4>
+                            <p>Itu menandakan kamu sudah memahami dirimu untuk tetap bersikap rileks dan percaya terhadap dirimu sendiri.</p>
+                        </div>
+                        <div class="alert alert-danger mt-3 feedback-incorrect feedback-s3-incorrect-A" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Respon Yang Perlu di Perbaiki</h4>
+                            <p>Karena ini bisa mempengaruhi dan menumbuhkan sikap emosional yang tidak stabil.</p>
+                        </div>
+                        <div class="alert alert-danger mt-3 feedback-incorrect feedback-s3-incorrect-B" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Respon Umum</h4>
+                            <p>Dikarenakan di generasi saat ini, kebiasaan mengerjakan di waktu dekat deadline itu selalu dikira sangat membantu karena ternyata membuat tugas selesai dikerjakan.</p>
+                        </div>
+                    </div>
+                </div>
+                 <hr class="my-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="d-flex justify-content-between mt-4" data-aos="fade-up" data-aos-delay="450">
+                    <button class="btn btn-outline-secondary" onclick="showTab('v-pills-empati-tab')"><i class="bi bi-arrow-left-short"></i> Sebelumnya</button>
+                    <button class="btn btn-primary" id="btn-keterampilan-next" onclick="showTab('v-pills-refleksi-tab')" style="display: none;">
+                        Selanjutnya <i class="bi bi-arrow-right-short"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-refleksi" role="tabpanel" aria-labelledby="v-pills-refleksi-tab">
+                <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cade23a6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');" data-aos="fade-down">
+                    Refleksi
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">6. Refleksi (Reflection)</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Mengelola emosi adalah keterampilan yang perlu dilatih terus-menerus.</p>
+                <p data-aos="fade-up" data-aos-delay="300">Anda telah menyelesaikan semua modul inti EMOform. Sekarang, luangkan waktu sejenak untuk merefleksikan apa yang telah Anda pelajari.</p>
+                <form data-aos="fade-up" data-aos-delay="350">
+                    <div class="mb-3">
+                        <label for="refleksi1" class="form-label fw-bold">Apa satu hal terpenting yang Anda pelajari dari modul ini?</label>
+                        <textarea class="form-control" id="refleksi1" rows="3" placeholder="Tuliskan pemikiran Anda..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="refleksi2" class="form-label fw-bold">Area mana (misal: Pengelolaan Diri, Empati) yang ingin Anda latih lebih lanjut?</label>
+                        <textarea class="form-control" id="refleksi2" rows="3" placeholder="Tuliskan rencana Anda..."></textarea>
+                    </div>
+                </form>
+                 <hr class="my-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="d-flex justify-content-between mt-4" data-aos="fade-up" data-aos-delay="450">
+                    <button class="btn btn-outline-secondary" onclick="showTab('v-pills-keterampilan-tab')"><i class="bi bi-arrow-left-short"></i> Sebelumnya</button>
+                    <button type="button" class="btn btn-primary" id="btnFinishModule">Selesaikan Modul! <i class="bi bi-check-circle-fill"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="modal fade" id="emotionCheckInModal" tabindex="-1" aria-labelledby="emotionCheckInModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content"> 
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="emotionCheckInModalLabel">Bagaimana Perasaan Kamu Hari Ini?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div id="emotion-selection-view">
+                        <p class="text-muted">Pilih satu emoji yang paling mewakili perasaan Anda saat ini.</p>
+                        
+                        <div class="d-flex justify-content-around fs-1" id="emotion-emoji-list">
+                            <span class="p-2" data-emotion="senang" data-emoji="😊">😊</span>
+                            <span class="p-2" data-emotion="netral" data-emoji="😐">😐</span>
+                            <span class="p-2" data-emotion="sedih" data-emoji="😥">😥</span>
+                            <span class="p-2" data-emotion="marah" data-emoji="😠">😠</span>
+                            <span class="p-2" data-emotion="lelah" data-emoji="😩">😩</span>
+                        </div>
+                    </div>
+                    
+                    <div id="emotion-description-view" style="display: none;">
+                        <span id="selected-emoji-display" class="fs-1"></span>
+                        <h4 id="selected-emoji-name" class="mt-2"></h4>
+                        <p id="selected-emoji-description" class="text-muted"></p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnNantiSaja">Nanti Saja</button>
+                    <button type="button" class="btn btn-outline-secondary" id="btnKembali" style="display: none;">&laquo; Kembali</button>
+                    
+                    <button type="button" class="btn btn-primary" id="btnSimpan" style="display: none;">Simpan & Lanjutkan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTeknikStop" tabindex="-1" aria-labelledby="modalTeknikStopLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTeknikStopLabel"><i class="bi bi-lightbulb-fill me-2"></i> Teknik STOP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Teknik STOP adalah strategi sederhana namun powerful untuk mengatur emosi di saat-saat sulit.</p>
+                    
+                    <div class="card mb-3 stop-item-card">
+                        <div class="card-body stop-item">
+                            <div class="stop-letter">S</div>
+                            <div class="stop-content">
+                                <h5>Stop</h5>
+                                <p>Hentikan apa yang sedang kamu lakukan. Berhenti sejenak dari situasi atau pikiran yang memicu emosi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 stop-item-card">
+                        <div class="card-body stop-item">
+                            <div class="stop-letter">T</div>
+                            <div class="stop-content">
+                                <h5>Take a breath</h5>
+                                <p>Ambil napas dalam-dalam. Tarik napas selama 4 hitungan, tahan 4 hitungan, hembuskan 4 hitungan. Ulangi 3 kali.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 stop-item-card">
+                        <div class="card-body stop-item">
+                            <div class="stop-letter">O</div>
+                            <div class="stop-content">
+                                <h5>Observe</h5>
+                                <p>Amati apa yang terjadi—baik di dalam diri (pikiran, emosi, sensasi tubuh) maupun di sekitarmu (situasi, orang lain). Jangan menilai, hanya amati.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 stop-item-card">
+                        <div class="card-body stop-item">
+                            <div class="stop-letter">P</div>
+                            <div class="stop-content">
+                                <h5>Proceed</h5>
+                                <p>Lanjutkan dengan cara yang lebih bijaksana. Pilih respons yang sesuai dengan nilai-nilaimu, bukan hanya reaksi otomatis.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nanti Saja</button>
+                    <button type="button" class="btn btn-primary" id="btnCobaStop">
+                        <i class="bi bi-play-circle me-2"></i> Coba "Take a Breath" Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalReframing" tabindex="-1" aria-labelledby="modalReframingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalReframingLabel"><i class="bi bi-arrow-repeat me-2"></i> Reframing Pikiran</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Reframing adalah teknik untuk mengubah cara pandang terhadap situasi, dari perspektif negatif menjadi lebih netral atau positif.</p>
+                    
+                    <h5 class="mt-3">Contoh Reframing</h5>
+                    
+                    <div class="reframing-example">
+                        <p class="text-negative">"Aku selalu gagal dalam segala hal"</p>
+                        <hr>
+                        <p class="text-positive">"Aku pernah mengalami kegagalan, tapi aku juga pernah berhasil. Kegagalan adalah bagian dari proses pembelajaran."</p>
+                    </div>
+
+                    <div class="reframing-example">
+                        <p class="text-negative">"Tidak ada yang peduli padaku"</p>
+                        <hr>
+                        <p class="text-positive">"Saat ini aku merasa kesepian, tapi ada orang-orang yang peduli padaku. Aku bisa menghubungi mereka."</p>
+                    </div>
+                    <div class="reframing-example">
+                        <p class="text-negative">"Situasi ini tidak akan pernah membaik"</p>
+                        <hr>
+                        <p class="text-positive">"Situasi ini sulit sekarang, tapi segalanya berubah seiring waktu. Aku bisa mengambil langkah kecil untuk perbaikan."</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        // FUNGSI UNTUK MENYIMPAN JAWABAN MOTIVASI
+        function saveMotivasiAndNext(tabId) {
+            const motivasiInput = document.getElementById('motivasiForm');
+            if (motivasiInput) {
+                localStorage.setItem('emoform_motivasi', motivasiInput.value || "Tidak diisi");
+            }
+            showTab(tabId);
+        }
+
+        // Fungsi global untuk berpindah tab
+        function showTab(tabId) {
+            try {
+                var tabEl = document.getElementById(tabId);
+                if(tabEl) {
+                    var tab = new bootstrap.Tab(tabEl);
+                    tab.show();
+                    AOS.refresh();
+                    window.scrollTo(0, 0);
+                }
+            } catch (e) {
+                console.error("Gagal berpindah tab:", e);
+            }
+        }
+
+        /* FUNGSI LEDAKAN EMOJI (DIPERBARUI) */
+        function createEmoteBurst(emote) {
+            const modalContent = document.querySelector('#emotionCheckInModal .modal-content');
+            if (!modalContent) return;
+
+            // Buat 50 partikel (lebih banyak)
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('span');
+                particle.classList.add('emote-particle');
+                particle.innerText = emote;
+
+                // Sebaran horizontal lebih luas
+                const randomX = (Math.random() - 0.5) * 400; 
+                const randomDuration = (Math.random() * 2 + 2) + 's'; // Animasi 2-4 detik
+                const randomDelay = (Math.random() * 0.5) + 's';
+                const randomSize = (Math.random() * 1.5 + 1) + 'rem';
+                
+                particle.style.left = `calc(50% + ${randomX}px)`;
+                particle.style.animationDuration = randomDuration;
+                particle.style.animationDelay = randomDelay;
+                particle.style.fontSize = randomSize;
+                
+                modalContent.appendChild(particle); 
+
+                // Hapus partikel setelah 5 detik
+                setTimeout(() => {
+                    particle.remove();
+                }, 5000); 
+            }
+        }
+        /* --- Akhir Fungsi --- */
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // INISIALISASI AOS
+            AOS.init({
+                duration: 600, 
+                once: false,     
+                offset: 50,      
+            });
+
+            let selectedEmote = null; 
+            let myModal; // Deklarasi di scope utama
+
+            // --- LOGIKA PENYAMBUTAN NAMA (DENGAN SWEETALERT) ---
+            const userName = localStorage.getItem('emoform_username');
+            if (!userName) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Sesi Tidak Ditemukan',
+                    text: 'Anda harus memasukkan nama terlebih dahulu.',
+                    confirmButtonColor: '#4a7c59',
+                    allowOutsideClick: false
+                }).then(() => {
+                    window.location.href = 'index.html';
+                });
+                return; 
+            }
+            
+            const welcomeLead = document.getElementById('welcome-lead');
+            if (welcomeLead) {
+                welcomeLead.innerHTML = `Selamat datang, <strong>${userName}</strong>! Di EMOform, e-modul interaktif yang dirancang untuk membantu Anda mengelola dan membentuk emosi secara cerdas dan sehat.`;
+            }
+
+            // --- LOGIKA PINDAH KE SUMMARY ---
+            const btnFinishModule = document.getElementById('btnFinishModule');
+            if (btnFinishModule) {
+                btnFinishModule.addEventListener('click', function() {
+                    const refleksi1 = document.getElementById('refleksi1').value;
+                    const refleksi2 = document.getElementById('refleksi2').value;
+                    localStorage.setItem('emoform_refleksi1', refleksi1 || "Tidak diisi");
+                    localStorage.setItem('emoform_refleksi2', refleksi2 || "Tidak diisi");
+                    window.location.href = 'summary.html';
+                });
+            }
+            
+            // --- LOGIKA MODAL CHECK-IN EMOSI (TIDAK OTOMATIS TAMPIL) ---
+            try {
+                var myModalEl = document.getElementById('emotionCheckInModal');
+                myModal = new bootstrap.Modal(myModalEl); 
+                
+                // myModal.show(); // <-- BARIS INI TELAH DIHAPUS (sesuai permintaan Anda)
+
+                myModalEl.addEventListener('hidden.bs.modal', function (event) {
+                    resetModalView();
+                })
+            } catch (e) {
+                console.error("Modal check-in tidak ditemukan.", e);
+            }
+
+            // ### BLOK JAVASCRIPT STUDI KASUS YANG DIPERBARUI ###
+            // --- LOGIKA STUDI KASUS (BARU UNTUK 3 SKENARIO) ---
+            
+            const allScenarios = document.querySelectorAll('.case-study-card .card-body');
+            const totalScenarios = allScenarios.length;
+            let correctScenariosCount = 0;
+            const nextBtnKeterampilan = document.getElementById('btn-keterampilan-next');
+
+            allScenarios.forEach(scenario => {
+                const choices = scenario.querySelectorAll('.list-group-item-action');
+                const feedbackCorrect = scenario.querySelector('.feedback-correct');
+
+                choices.forEach(choice => {
+                    choice.addEventListener('click', function() {
+                        // Hentikan jika skenario ini sudah dijawab dengan benar
+                        if (scenario.classList.contains('answered-correctly')) return;
+
+                        const isCorrect = this.getAttribute('data-correct') === 'true';
+
+                        // Sembunyikan semua feedback & hapus status di skenario ini dulu
+                        scenario.querySelectorAll('.feedback-correct, .feedback-incorrect').forEach(fb => fb.style.display = 'none');
+                        choices.forEach(c => c.classList.remove('list-group-item-success', 'list-group-item-danger'));
+
+                        if (isCorrect) {
+                            // Jawaban benar
+                            scenario.classList.add('answered-correctly');
+                            this.classList.add('list-group-item-success');
+                            if (feedbackCorrect) feedbackCorrect.style.display = 'block';
+                            correctScenariosCount++;
+
+                            // Nonaktifkan semua pilihan di skenario ini
+                            choices.forEach(btn => btn.classList.add('disabled'));
+
+                            // Cek apakah semua skenario sudah terjawab benar
+                            if (correctScenariosCount === totalScenarios) {
+                                if (nextBtnKeterampilan) {
+                                    nextBtnKeterampilan.style.display = 'block';
+                                    AOS.refresh(); // Refresh AOS untuk memunculkan tombol
+                                }
+                            }
+                        } else {
+                            // Jawaban salah
+                            this.classList.add('list-group-item-danger');
+                            const feedbackTargetSelector = this.getAttribute('data-feedback-target');
+                            if (feedbackTargetSelector) {
+                                const feedbackIncorrect = scenario.querySelector(feedbackTargetSelector);
+                                if (feedbackIncorrect) {
+                                    feedbackIncorrect.style.display = 'block';
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+            // ### AKHIR BLOK JAVASCRIPT STUDI KASUS ###
+
+
+            // --- LOGIKA MODAL EMOSI (BARU) ---
+            const emotionDescriptions = {
+                senang: { name: "Senang (Happy)", description: "Merasa bahagia, gembira, atau puas. Ini adalah emosi positif yang menandakan bahwa kebutuhan Anda terpenuhi atau Anda menikmati momen saat ini." },
+                netral: { name: "Netral (Neutral)", description: "Merasa tenang, damai, atau tidak ada emosi kuat yang dominan. Ini adalah keadaan dasar yang normal sebelum emosi lain muncul." },
+                sedih: { name: "Sedih (Sad)", description: "Merasa kecewa, berduka, atau tidak bahagia. Ini adalah sinyal bahwa Anda mungkin mengalami kehilangan atau sesuatu tidak berjalan sesuai harapan." },
+                marah: { name: "Marah (Angry)", description: "Merasa kesal, frustrasi, atau jengkel. Seringkali ini adalah respons terhadap ketidakadilan, ancaman, atau batasan yang dilanggar." },
+                lelah: { name: "Lelah/Stres (Tired/Stressed)", description: "Merasa terkuras secara fisik atau mental, cemas, atau tertekan. Ini adalah sinyal bahwa tubuh dan pikiran Anda perlu istirahat dan pemulihan." }
+            };
+
+            const selectionView = document.getElementById('emotion-selection-view');
+            const descriptionView = document.getElementById('emotion-description-view');
+            const btnNantiSaja = document.getElementById('btnNantiSaja');
+            const btnKembali = document.getElementById('btnKembali');
+            const btnSimpan = document.getElementById('btnSimpan');
+            const emojiSpans = document.querySelectorAll('#emotion-emoji-list span[data-emotion]'); 
+
+            const emojiDisplay = document.getElementById('selected-emoji-display');
+            const emojiName = document.getElementById('selected-emoji-name');
+            const emojiDescription = document.getElementById('selected-emoji-description');
+            const modalTitle = document.getElementById('emotionCheckInModalLabel');
+            const originalTitle = modalTitle.innerText;
+
+            emojiSpans.forEach(span => {
+                span.addEventListener('click', function() {
+                    const emotionKey = this.getAttribute('data-emotion');
+                    const emoji = this.getAttribute('data-emoji');
+                    const emotionData = emotionDescriptions[emotionKey];
+
+                    selectedEmote = emoji; 
+
+                    emojiDisplay.innerText = emoji;
+                    emojiName.innerText = emotionData.name;
+                    emojiDescription.innerText = emotionData.description;
+                    selectionView.style.display = 'none';
+                    descriptionView.style.display = 'block';
+                    btnNantiSaja.style.display = 'none';
+                    btnKembali.style.display = 'inline-block';
+                    btnSimpan.style.display = 'inline-block';
+                    modalTitle.innerText = "Tentang Emosi Ini";
+                });
+            });
+
+            function resetModalView() {
+                selectionView.style.display = 'block';
+                descriptionView.style.display = 'none';
+                btnNantiSaja.style.display = 'inline-block';
+                btnKembali.style.display = 'none';
+                btnSimpan.style.display = 'none';
+                modalTitle.innerText = originalTitle;
+                selectedEmote = null; 
+            }
+
+            btnKembali.addEventListener('click', function() {
+                resetModalView();
+            });
+            
+            // PERBAIKAN: Panggil fungsi ledakan emoji & tutup modal manual
+            btnSimpan.addEventListener('click', function(event) {
+                // TAMBAHAN PENTING: Mencegah 'data-bs-dismiss'
+                event.preventDefault();
+                event.stopPropagation();
+                
+                if (selectedEmote) {
+                    createEmoteBurst(selectedEmote);
+                }
+
+                // PERBAIKAN: Jeda SANGAT LAMA (3 detik) agar Anda pasti lihat
+                setTimeout(() => {
+                    if (myModal) {
+                        myModal.hide();
+                    }
+                }, 1500); // 1.5 detik untuk melihat animasi
+            });
+
+            // ▼▼▼ KODE JAVASCRIPT BARU DITAMBAHKAN DI SINI ▼▼▼
+            
+            // --- LOGIKA UNTUK LATIHAN PERNAPASAN (TEKNIK STOP) ---
+            const btnCobaStop = document.getElementById('btnCobaStop');
+            if (btnCobaStop) {
+                btnCobaStop.addEventListener('click', function() {
+                    // Tutup modal Bootstrap saat SweetAlert terbuka
+                    var stopModalEl = document.getElementById('modalTeknikStop');
+                    var stopModal = bootstrap.Modal.getInstance(stopModalEl);
+                    if (stopModal) {
+                        stopModal.hide();
+                    }
+                    
+                    // Mulai Latihan Pernapasan dengan SweetAlert
+                    startBreathingExercise();
+                });
+            }
+
+            function startBreathingExercise() {
+                let timerInterval;
+                Swal.fire({
+                    title: 'Tarik Napas...',
+                    html: 'Tarik napas perlahan selama <b>4</b> detik.',
+                    timer: 4000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                        const b = Swal.getHtmlContainer().querySelector('b');
+                        timerInterval = setInterval(() => {
+                            if (b) {
+                               b.textContent = Math.ceil(Swal.getTimerLeft() / 1000);
+                            }
+                        }, 100);
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    // Lanjut ke TAHAN
+                    return Swal.fire({
+                        title: 'Tahan Napas',
+                        html: 'Tahan napas Anda selama <b>4</b> detik.',
+                        timer: 4000,
+                        timerProgressBar: true,
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            const b = Swal.getHtmlContainer().querySelector('b');
+                            timerInterval = setInterval(() => {
+                                if (b) {
+                                    b.textContent = Math.ceil(Swal.getTimerLeft() / 1000);
+                                }
+                            }, 100);
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    });
+                }).then((result) => {
+                    // Lanjut ke HEMBUSKAN
+                    return Swal.fire({
+                        title: 'Hembuskan Napas',
+                        html: 'Hembuskan perlahan selama <b>4</b> detik.',
+                        timer: 4000,
+                        timerProgressBar: true,
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            const b = Swal.getHtmlContainer().querySelector('b');
+                            timerInterval = setInterval(() => {
+                                 if (b) {
+                                    b.textContent = Math.ceil(Swal.getTimerLeft() / 1000);
+                                }
+                            }, 100);
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    });
+                }).then((result) => {
+                    // Selesai
+                    Swal.fire({
+                        title: 'Selesai!',
+                        text: 'Latihan singkat selesai. Ulangi 2-3 kali lagi jika perlu. Sekarang, amati (Observe) dan lanjutkan (Proceed).',
+                        icon: 'success',
+                        confirmButtonColor: '#4a7c59', // Sesuai tema Anda
+                    });
+                });
+            }
+            // ▲▲▲ AKHIR DARI KODE JAVASCRIPT BARU ▲▲▲
+
+        });
+    </script>
+</body>
+</html>
